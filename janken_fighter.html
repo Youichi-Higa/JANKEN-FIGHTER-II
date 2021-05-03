@@ -55,91 +55,137 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      // 波動拳ボタン押す
-      $("#gu_btn").on("click", function () {
-        // ０〜２の乱数作成
-        const min = 0;
-        const max = 2;
-        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-
-        // コンピューターの手が決まって、勝敗が表示される
-        if (randomNumber == 0) {
-          $("#com_hand").text("はどうけん");
-          $("#result").text("あいこ");
-        } else if (randomNumber == 1) {
-          $("#com_hand").text("しょうりゅうけん");
-          $("#result").text("あなたのかち");
-        } else if (randomNumber == 2) {
-          $("#com_hand").text("たつまきせんぷうきゃく");
-          $("#result").text("あなたのまけ");
-        } else {
-          alert("エラー");
-        }
-      });
-
-      // 波動拳の音声
+      // 波動拳を選んだ時の音声
       $("#gu_btn").on("click", function sound() {
         $("#hadoken").get(0).currentTime = 0;
         $("#hadoken").get(0).play();
       });
 
-      // 昇竜拳ボタン押す
-      $("#cho_btn").on("click", function () {
-        // ０〜２の乱数作成
-        const min = 0;
-        const max = 2;
-        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      // 波動拳を選んだ時の相手の技の決定
+      $("#gu_btn").on("click", function () {
+        // setTimeout_クリックしてから２秒後に実行
+        setTimeout(function () {
+          // ０〜２の乱数作成
+          const min = 0;
+          const max = 2;
+          const randomNumber =
+            Math.floor(Math.random() * (max - min + 1)) + min;
 
-        // コンピューターの手が決まって、勝敗が表示される
-        if (randomNumber == 0) {
-          $("#com_hand").text("はどうけん");
-          $("#result").text("あなたのまけ");
-        } else if (randomNumber == 1) {
-          $("#com_hand").text("しょうりゅうけん");
-          $("#result").text("あいこ");
-        } else if (randomNumber == 2) {
-          $("#com_hand").text("たつまきせんぷうきゃく");
-          $("#result").text("あなたのかち");
-        } else {
-          alert("エラー");
-        }
+          // 相手の手が決まり、音声が流れて勝敗が表示される
+          if (randomNumber == 0) {
+            $("#com_hand").text("はどうけん");
+            $("#result").text("あいこ");
+            $(function sound() {
+              $("#hadoken").get(0).currentTime = 0;
+              $("#hadoken").get(0).play();
+            });
+          } else if (randomNumber == 1) {
+            $("#com_hand").text("しょうりゅうけん");
+            $("#result").text("あなたのかち");
+            $(function sound() {
+              $("#shoryuken").get(0).currentTime = 0;
+              $("#shoryuken").get(0).play();
+            });
+          } else if (randomNumber == 2) {
+            $("#com_hand").text("たつまきせんぷうきゃく");
+            $("#result").text("あなたのまけ");
+            $(function sound() {
+              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+              $("#tatsumaki_senpukyaku").get(0).play();
+            });
+          } else {
+            alert("エラー");
+          }
+        }, 2000);
       });
 
-      // 昇竜拳の音声
+      // 昇竜拳を選んだ時の音声
       $("#cho_btn").on("click", function sound() {
         $("#shoryuken").get(0).currentTime = 0;
         $("#shoryuken").get(0).play();
       });
 
-      // 竜巻旋風脚ボタン押す
-      $("#par_btn").on("click", function () {
-        // ０〜２の乱数作成
-        const min = 0;
-        const max = 2;
-        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+      // 昇竜拳を選んだ時の相手の技の決定
+      $("#cho_btn").on("click", function () {
+        // setTimeout_クリックしてから２秒後に実行
+        setTimeout(function () {
+          // ０〜２の乱数作成
+          const min = 0;
+          const max = 2;
+          const randomNumber =
+            Math.floor(Math.random() * (max - min + 1)) + min;
 
-        // コンピューターの手が決まって、勝敗が表示される
-        if (randomNumber == 0) {
-          $("#com_hand").text("はどうけん");
-          $("#result").text("あなたのかち");
-        } else if (randomNumber == 1) {
-          $("#com_hand").text("しょうりゅうけん");
-          $("#result").text("あなたのまけ");
-        } else if (randomNumber == 2) {
-          $("#com_hand").text("たつまきせんぷうきゃく");
-          $("#result").text("あいこ");
-        } else {
-          alert("エラー");
-        }
+          // 相手の手が決まり、音声が流れて勝敗が表示される
+          if (randomNumber == 0) {
+            $("#com_hand").text("はどうけん");
+            $("#result").text("あなたのまけ");
+            $(function sound() {
+              $("#hadoken").get(0).currentTime = 0;
+              $("#hadoken").get(0).play();
+            });
+          } else if (randomNumber == 1) {
+            $("#com_hand").text("しょうりゅうけん");
+            $("#result").text("あいこ");
+            $(function sound() {
+              $("#shoryuken").get(0).currentTime = 0;
+              $("#shoryuken").get(0).play();
+            });
+          } else if (randomNumber == 2) {
+            $("#com_hand").text("たつまきせんぷうきゃく");
+            $("#result").text("あなたのかち");
+            $(function sound() {
+              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+              $("#tatsumaki_senpukyaku").get(0).play();
+            });
+          } else {
+            alert("エラー");
+          }
+        }, 2000);
       });
 
-      // 竜巻旋風脚の音声
+      // 竜巻旋風脚を選んだ時の音声
       $("#par_btn").on("click", function sound() {
         $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
         $("#tatsumaki_senpukyaku").get(0).play();
       });
 
-      // $("#result").text();
+      // 竜巻旋風脚を選んだ時の相手の技の決定
+      $("#par_btn").on("click", function () {
+        // setTimeout_クリックしてから２秒後に実行
+        setTimeout(function () {
+          // ０〜２の乱数作成
+          const min = 0;
+          const max = 2;
+          const randomNumber =
+            Math.floor(Math.random() * (max - min + 1)) + min;
+
+          // 相手の手が決まり、音声が流れて勝敗が表示される
+          if (randomNumber == 0) {
+            $("#com_hand").text("はどうけん");
+            $("#result").text("あなたのかち");
+            $(function sound() {
+              $("#hadoken").get(0).currentTime = 0;
+              $("#hadoken").get(0).play();
+            });
+          } else if (randomNumber == 1) {
+            $("#com_hand").text("しょうりゅうけん");
+            $("#result").text("あなたのまけ");
+            $(function sound() {
+              $("#shoryuken").get(0).currentTime = 0;
+              $("#shoryuken").get(0).play();
+            });
+          } else if (randomNumber == 2) {
+            $("#com_hand").text("たつまきせんぷうきゃく");
+            $("#result").text("あいこ");
+            $(function sound() {
+              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+              $("#tatsumaki_senpukyaku").get(0).play();
+            });
+          } else {
+            alert("エラー");
+          }
+        }, 2000);
+      });
     </script>
   </body>
 </html>
