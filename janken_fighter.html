@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/sample.css" />
+    <title>JANKEN FIGHTER II</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>JANKEN FIGHTER II</h1>
+    </header>
+
+    <main>
+      <ul>
+        <li id="gu_btn">波動拳</li>
+        <li id="cho_btn">昇竜拳</li>
+        <li id="par_btn">竜巻旋風脚</li>
+      </ul>
+      <div id="com_hand">コンピュータの出した手は？</div>
+      <div id="result">結果は？</div>
+      <audio src="audio/hadoken.mp3" id="hadoken" preload="auto"></audio>
+      <audio src="audio/shoryuken.mp3" id="shoryuken" preload="auto"></audio>
+      <audio
+        src="audio/tatsumaki_senpukyaku.mp3"
+        id="tatsumaki_senpukyaku"
+        preload="auto"
+      ></audio>
+    </main>
+
+    <footer></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      // じゃんけんファイターII
+
+      // 波動拳ボタン押す
+      $("#gu_btn").on("click", function () {
+        // ０〜２の乱数作成
+        const min = 0;
+        const max = 2;
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        // コンピューターの手が決まって、勝敗が表示される
+        if (randomNumber == 0) {
+          $("#com_hand").text("波動拳");
+          $("#result").text("あいこ");
+        } else if (randomNumber == 1) {
+          $("#com_hand").text("昇竜拳");
+          $("#result").text("勝ち");
+        } else if (randomNumber == 2) {
+          $("#com_hand").text("竜巻旋風脚");
+          $("#result").text("負け");
+        } else {
+          alert("エラー");
+        }
+      });
+
+      // 波動拳の音声
+      $("#gu_btn").on("click", function sound() {
+        $("#hadoken").get(0).currentTime = 0;
+        $("#hadoken").get(0).play();
+      });
+
+      // 昇竜拳ボタン押す
+      $("#cho_btn").on("click", function () {
+        // ０〜２の乱数作成
+        const min = 0;
+        const max = 2;
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        // コンピューターの手が決まって、勝敗が表示される
+        if (randomNumber == 0) {
+          $("#com_hand").text("波動拳");
+          $("#result").text("負け");
+        } else if (randomNumber == 1) {
+          $("#com_hand").text("昇竜拳");
+          $("#result").text("あいこ");
+        } else if (randomNumber == 2) {
+          $("#com_hand").text("竜巻旋風脚");
+          $("#result").text("勝ち");
+        } else {
+          alert("エラー");
+        }
+      });
+
+      // 昇竜拳の音声
+      $("#cho_btn").on("click", function sound() {
+        $("#shoryuken").get(0).currentTime = 0;
+        $("#shoryuken").get(0).play();
+      });
+
+      // 竜巻旋風脚ボタン押す
+      $("#par_btn").on("click", function () {
+        // ０〜２の乱数作成
+        const min = 0;
+        const max = 2;
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        // コンピューターの手が決まって、勝敗が表示される
+        if (randomNumber == 0) {
+          $("#com_hand").text("波動拳");
+          $("#result").text("勝ち");
+        } else if (randomNumber == 1) {
+          $("#com_hand").text("昇竜拳");
+          $("#result").text("負け");
+        } else if (randomNumber == 2) {
+          $("#com_hand").text("竜巻旋風脚");
+          $("#result").text("あいこ");
+        } else {
+          alert("エラー");
+        }
+      });
+
+      // 竜巻旋風脚の音声
+      $("#par_btn").on("click", function sound() {
+        $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+        $("#tatsumaki_senpukyaku").get(0).play();
+      });
+
+      // $("#result").text();
+    </script>
+  </body>
+</html>
