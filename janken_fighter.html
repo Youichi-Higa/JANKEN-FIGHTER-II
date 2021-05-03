@@ -8,18 +8,40 @@
   </head>
 
   <body>
+    <!-- タイトル -->
     <header>
       <h1>JANKEN FIGHTER II</h1>
     </header>
 
+    <!-- 画像 -->
     <main>
-      <ul>
-        <li id="gu_btn">波動拳</li>
-        <li id="cho_btn">昇竜拳</li>
-        <li id="par_btn">竜巻旋風脚</li>
-      </ul>
-      <div id="com_hand">コンピュータの出した手は？</div>
-      <div id="result">結果は？</div>
+      <img src="img/ryu_ken.jpg" alt="" />
+
+      <div class="ryu_ken_window">
+        <!-- 必殺技リスト -->
+        <div class="move_list">
+          <p>あなたのわざをえらぶ</p>
+          <ul>
+            <li id="gu_btn">はどうけん</li>
+            <li id="cho_btn">しょうりゅうけん</li>
+            <li id="par_btn">たつまきせんぷうきゃく</li>
+          </ul>
+        </div>
+
+        <!-- 相手の技表示 -->
+        <div class="ken_move">
+          <div>あいてのわざは．．．．</div>
+          <div id="com_hand"></div>
+        </div>
+      </div>
+
+      <!-- メッセージウィンドウ -->
+      <div class="message_window">
+        <p>しょうはいは・・・</p>
+        <div id="result"></div>
+      </div>
+
+      <!-- 音声 -->
       <audio src="audio/hadoken.mp3" id="hadoken" preload="auto"></audio>
       <audio src="audio/shoryuken.mp3" id="shoryuken" preload="auto"></audio>
       <audio
@@ -33,8 +55,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      // じゃんけんファイターII
-
       // 波動拳ボタン押す
       $("#gu_btn").on("click", function () {
         // ０〜２の乱数作成
@@ -44,14 +64,14 @@
 
         // コンピューターの手が決まって、勝敗が表示される
         if (randomNumber == 0) {
-          $("#com_hand").text("波動拳");
+          $("#com_hand").text("はどうけん");
           $("#result").text("あいこ");
         } else if (randomNumber == 1) {
-          $("#com_hand").text("昇竜拳");
-          $("#result").text("勝ち");
+          $("#com_hand").text("しょうりゅうけん");
+          $("#result").text("あなたのかち");
         } else if (randomNumber == 2) {
-          $("#com_hand").text("竜巻旋風脚");
-          $("#result").text("負け");
+          $("#com_hand").text("たつまきせんぷうきゃく");
+          $("#result").text("あなたのまけ");
         } else {
           alert("エラー");
         }
@@ -72,14 +92,14 @@
 
         // コンピューターの手が決まって、勝敗が表示される
         if (randomNumber == 0) {
-          $("#com_hand").text("波動拳");
-          $("#result").text("負け");
+          $("#com_hand").text("はどうけん");
+          $("#result").text("あなたのまけ");
         } else if (randomNumber == 1) {
-          $("#com_hand").text("昇竜拳");
+          $("#com_hand").text("しょうりゅうけん");
           $("#result").text("あいこ");
         } else if (randomNumber == 2) {
-          $("#com_hand").text("竜巻旋風脚");
-          $("#result").text("勝ち");
+          $("#com_hand").text("たつまきせんぷうきゃく");
+          $("#result").text("あなたのかち");
         } else {
           alert("エラー");
         }
@@ -100,13 +120,13 @@
 
         // コンピューターの手が決まって、勝敗が表示される
         if (randomNumber == 0) {
-          $("#com_hand").text("波動拳");
-          $("#result").text("勝ち");
+          $("#com_hand").text("はどうけん");
+          $("#result").text("あなたのかち");
         } else if (randomNumber == 1) {
-          $("#com_hand").text("昇竜拳");
-          $("#result").text("負け");
+          $("#com_hand").text("しょうりゅうけん");
+          $("#result").text("あなたのまけ");
         } else if (randomNumber == 2) {
-          $("#com_hand").text("竜巻旋風脚");
+          $("#com_hand").text("たつまきせんぷうきゃく");
           $("#result").text("あいこ");
         } else {
           alert("エラー");
