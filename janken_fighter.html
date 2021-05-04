@@ -20,26 +20,23 @@
       <div class="ryu_ken_window">
         <!-- 必殺技リスト -->
         <div class="move_list">
-          <p>あなたのわざをえらぶ</p>
+          <p>あなたのわざをえらぶ▼</p>
           <ul>
-            <li id="gu_btn">はどうけん</li>
-            <li id="cho_btn">しょうりゅうけん</li>
-            <li id="par_btn">たつまきせんぷうきゃく</li>
+            <li id="gu_btn">✊はどうけん</li>
+            <li id="cho_btn">✌️しょうりゅうけん</li>
+            <li id="par_btn">✋たつまきせんぷうきゃく</li>
           </ul>
         </div>
 
         <!-- 相手の技表示 -->
         <div class="ken_move">
-          <div>あいてのわざは．．．．</div>
+          <div>あいてのわざは ．．．．．</div>
           <div id="com_hand"></div>
         </div>
       </div>
 
       <!-- メッセージウィンドウ -->
-      <div class="message_window">
-        <p>しょうはいは・・・</p>
-        <div id="result"></div>
-      </div>
+      <div id="result">ダメージは ・・・</div>
 
       <!-- 音声 -->
       <audio src="audio/hadoken.mp3" id="hadoken" preload="auto"></audio>
@@ -55,6 +52,20 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+      // 自分と相手の体力値
+      let player_HP = 100;
+      let com_HP = 100;
+
+      // 相手の体力を０以下にしたら勝ち
+      // うわーうわーうわー
+      // you win　音声
+      // しょうりゅうけん　を　やぶらぬかぎり　おまえに　かちめはない！！
+
+      // 自分の体力が０以下になったら負け
+      // うわーうわーうわー
+      // you lose　音声
+      // くにへ　かえるんだな。おまえに　かぞくがいるだろう・・・
+
       // 波動拳を選んだ時の音声
       $("#gu_btn").on("click", function sound() {
         $("#hadoken").get(0).currentTime = 0;
@@ -66,29 +77,27 @@
         // setTimeout_クリックしてから２秒後に実行
         setTimeout(function () {
           // ０〜２の乱数作成
-          const min = 0;
-          const max = 2;
-          const randomNumber =
-            Math.floor(Math.random() * (max - min + 1)) + min;
-
-          // 相手の手が決まり、音声が流れて勝敗が表示される
+          const randomNumber = Math.floor(Math.random() * 3);
+          // 相手の手が決まり、音声が流れてダメージが表示される
           if (randomNumber == 0) {
-            $("#com_hand").text("はどうけん");
-            $("#result").text("あいこ");
+            $("#com_hand").text("✊はどうけん");
+            $("#result").text("うちけしとなり、りょうしゃにダメージなし");
             $(function sound() {
               $("#hadoken").get(0).currentTime = 0;
               $("#hadoken").get(0).play();
             });
           } else if (randomNumber == 1) {
-            $("#com_hand").text("しょうりゅうけん");
-            $("#result").text("あなたのかち");
+            $("#com_hand").text("✌️しょうりゅうけん");
+            $("#result").text("あいてに３０のダメージ");
+            com_HP -= 30;
             $(function sound() {
               $("#shoryuken").get(0).currentTime = 0;
               $("#shoryuken").get(0).play();
             });
           } else if (randomNumber == 2) {
-            $("#com_hand").text("たつまきせんぷうきゃく");
-            $("#result").text("あなたのまけ");
+            $("#com_hand").text("✋たつまきせんぷうきゃく");
+            $("#result").text("あなたに３０のダメージ");
+            player_HP -= 30;
             $(function sound() {
               $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
               $("#tatsumaki_senpukyaku").get(0).play();
@@ -96,6 +105,8 @@
           } else {
             alert("エラー");
           }
+          console.log(player_HP);
+          console.log(com_HP);
         }, 2000);
       });
 
@@ -110,29 +121,29 @@
         // setTimeout_クリックしてから２秒後に実行
         setTimeout(function () {
           // ０〜２の乱数作成
-          const min = 0;
-          const max = 2;
-          const randomNumber =
-            Math.floor(Math.random() * (max - min + 1)) + min;
-
-          // 相手の手が決まり、音声が流れて勝敗が表示される
+          const randomNumber = Math.floor(Math.random() * 3);
+          // 相手の手が決まり、音声が流れてダメージが表示される
           if (randomNumber == 0) {
-            $("#com_hand").text("はどうけん");
-            $("#result").text("あなたのまけ");
+            $("#com_hand").text("✊はどうけん");
+            $("#result").text("あなたに３０のダメージ");
+            player_HP -= 30;
             $(function sound() {
               $("#hadoken").get(0).currentTime = 0;
               $("#hadoken").get(0).play();
             });
           } else if (randomNumber == 1) {
-            $("#com_hand").text("しょうりゅうけん");
-            $("#result").text("あいこ");
+            $("#com_hand").text("✌️しょうりゅうけん");
+            $("#result").text("あいうちとなり、りょうしゃに１０のダメージ");
+            player_HP -= 10;
+            com_HP -= 10;
             $(function sound() {
               $("#shoryuken").get(0).currentTime = 0;
               $("#shoryuken").get(0).play();
             });
           } else if (randomNumber == 2) {
-            $("#com_hand").text("たつまきせんぷうきゃく");
-            $("#result").text("あなたのかち");
+            $("#com_hand").text("✋たつまきせんぷうきゃく");
+            $("#result").text("あいてに３０のダメージ");
+            com_HP -= 30;
             $(function sound() {
               $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
               $("#tatsumaki_senpukyaku").get(0).play();
@@ -140,6 +151,8 @@
           } else {
             alert("エラー");
           }
+          console.log(player_HP);
+          console.log(com_HP);
         }, 2000);
       });
 
@@ -154,29 +167,29 @@
         // setTimeout_クリックしてから２秒後に実行
         setTimeout(function () {
           // ０〜２の乱数作成
-          const min = 0;
-          const max = 2;
-          const randomNumber =
-            Math.floor(Math.random() * (max - min + 1)) + min;
-
-          // 相手の手が決まり、音声が流れて勝敗が表示される
+          const randomNumber = Math.floor(Math.random() * 3);
+          // 相手の手が決まり、音声が流れてダメージが表示される
           if (randomNumber == 0) {
-            $("#com_hand").text("はどうけん");
-            $("#result").text("あなたのかち");
+            $("#com_hand").text("✊はどうけん");
+            $("#result").text("あいてに３０のダメージ");
+            com_HP -= 30;
             $(function sound() {
               $("#hadoken").get(0).currentTime = 0;
               $("#hadoken").get(0).play();
             });
           } else if (randomNumber == 1) {
-            $("#com_hand").text("しょうりゅうけん");
-            $("#result").text("あなたのまけ");
+            $("#com_hand").text("✌️しょうりゅうけん");
+            $("#result").text("あなたに３０のダメージ");
+            player_HP -= 30;
             $(function sound() {
               $("#shoryuken").get(0).currentTime = 0;
               $("#shoryuken").get(0).play();
             });
           } else if (randomNumber == 2) {
-            $("#com_hand").text("たつまきせんぷうきゃく");
-            $("#result").text("あいこ");
+            $("#com_hand").text("✋たつまきせんぷうきゃく");
+            $("#result").text("あいうちとなり、りょうしゃに１０のダメージ");
+            player_HP -= 10;
+            com_HP -= 10;
             $(function sound() {
               $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
               $("#tatsumaki_senpukyaku").get(0).play();
@@ -184,6 +197,8 @@
           } else {
             alert("エラー");
           }
+          console.log(player_HP);
+          console.log(com_HP);
         }, 2000);
       });
     </script>

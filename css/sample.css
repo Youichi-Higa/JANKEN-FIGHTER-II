@@ -3,7 +3,7 @@ body {
   margin: 0 10px;
   padding: 0;
   text-align: left;
-  font-size: 20px;
+  font-size: 22px;
   color: #fff;
   background-color: #000000;
   font-family: PixelMplus10;
@@ -37,8 +37,10 @@ img {
 }
 
 ul {
+  list-style: none;
   width: max-content;
   margin: 0;
+  padding: 0;
 }
 li {
   cursor: pointer;
@@ -59,11 +61,8 @@ li:hover {
   padding: 18px, 0;
 }
 
-.message_window {
+#result {
   border: 1px solid #fff;
   margin: 20px 0 0;
   padding: 10px;
-}
-#result {
-  font-size: 40px;
 }
