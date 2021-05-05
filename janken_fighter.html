@@ -68,8 +68,214 @@
           $(function sound() {
             $("#KO").get(0).play();
           });
+          $("#message_window").text("KO!!!");
         }
       }
+
+      // グーの波動拳を選んだ時の音声
+      $("#gu_btn").on("click", function sound() {
+        $("#hadoken").get(0).currentTime = 0;
+        $("#hadoken").get(0).play();
+        console.log(player_HP);
+        console.log(com_HP);
+      });
+
+      // グーの波動拳を選んだ時の処理
+      $("#gu_btn").on("click", function () {
+        // setTimeout_クリックしてから1.5秒後に実行
+        setTimeout(function () {
+          // ０〜２の乱数作成
+          const randomNumber = Math.floor(Math.random() * 3);
+          // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
+          // グーの波動拳
+          if (randomNumber == 0) {
+            // 技名表示
+            $("#com_hand").text("✊はどうけん");
+            // ダメージ表示
+            $("#message_window").text("うちけしあって、おたがいにダメージなし");
+            // 音声
+            $(function sound() {
+              $("#hadoken").get(0).currentTime = 0;
+              $("#hadoken").get(0).play();
+            });
+            // チョキの昇竜拳
+          } else if (randomNumber == 1) {
+            // 技名表示
+            $("#com_hand").text("✌️しょうりゅうけん");
+            // ダメージ表示
+            $("#message_window").text("あいてに３０のダメージ");
+            // ダメージ計算
+            com_HP -= 30;
+            // 音声
+            $(function sound() {
+              $("#shoryuken").get(0).currentTime = 0;
+              $("#shoryuken").get(0).play();
+            });
+            // パーの竜巻旋風脚
+          } else if (randomNumber == 2) {
+            // 技名表示
+            $("#com_hand").text("✋たつまきせんぷうきゃく");
+            // ダメージ表示
+            $("#message_window").text("あなたに３０のダメージ");
+            // ダメージ計算
+            player_HP -= 30;
+            // 音声
+            $(function sound() {
+              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+              $("#tatsumaki_senpukyaku").get(0).play();
+            });
+          } else {
+            alert("エラー");
+          }
+          console.log(player_HP);
+          console.log(com_HP);
+          // setTimeout_クリックしてから1.5+1=2.5秒後に実行
+          setTimeout(function () {
+            // KO音声の関数を呼び出し
+            KO();
+          }, 1000);
+        }, 1500);
+      });
+
+      // チョキの昇竜拳を選んだ時の音声
+      $("#cho_btn").on("click", function sound() {
+        $("#shoryuken").get(0).currentTime = 0;
+        $("#shoryuken").get(0).play();
+        console.log(player_HP);
+        console.log(com_HP);
+      });
+
+      // チョキの昇竜拳を選んだ時の処理
+      $("#cho_btn").on("click", function () {
+        // setTimeout_クリックしてから1.5秒後に実行
+        setTimeout(function () {
+          // ０〜２の乱数作成
+          const randomNumber = Math.floor(Math.random() * 3);
+          // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
+          // グーの波動拳
+          if (randomNumber == 0) {
+            // 技名表示
+            $("#com_hand").text("✊はどうけん");
+            // ダメージ表示
+            $("#message_window").text("あなたに３０のダメージ");
+            // ダメージ計算
+            player_HP -= 30;
+            // 音声
+            $(function sound() {
+              $("#hadoken").get(0).currentTime = 0;
+              $("#hadoken").get(0).play();
+            });
+            // チョキの昇竜拳
+          } else if (randomNumber == 1) {
+            // 技名表示
+            $("#com_hand").text("✌️しょうりゅうけん");
+            // ダメージ表示
+            $("#message_window").text(
+              "あいうちとなり、おたがいに１０のダメージ"
+            );
+            // ダメージ計算
+            player_HP -= 10;
+            com_HP -= 10;
+            // 音声
+            $(function sound() {
+              $("#shoryuken").get(0).currentTime = 0;
+              $("#shoryuken").get(0).play();
+            });
+            // パーの竜巻旋風脚
+          } else if (randomNumber == 2) {
+            // 技名表示
+            $("#com_hand").text("✋たつまきせんぷうきゃく");
+            // ダメージ表示
+            $("#message_window").text("あいてに３０のダメージ");
+            // ダメージ計算
+            com_HP -= 30;
+            // 音声
+            $(function sound() {
+              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+              $("#tatsumaki_senpukyaku").get(0).play();
+            });
+          } else {
+            alert("エラー");
+          }
+          console.log(player_HP);
+          console.log(com_HP);
+          // setTimeout_クリックしてから1.5+1=2.5秒後に実行
+          setTimeout(function () {
+            // KO音声の関数を呼び出し
+            KO();
+          }, 1000);
+        }, 1500);
+      });
+
+      // パーの竜巻旋風脚を選んだ時の音声
+      $("#par_btn").on("click", function sound() {
+        $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+        $("#tatsumaki_senpukyaku").get(0).play();
+        console.log(player_HP);
+        console.log(com_HP);
+      });
+
+      // パーの竜巻旋風脚を選んだ時の処理
+      $("#par_btn").on("click", function () {
+        // setTimeout_クリックしてから1.5秒後に実行
+        setTimeout(function () {
+          // ０〜２の乱数作成
+          const randomNumber = Math.floor(Math.random() * 3);
+          // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
+          // グーの波動拳
+          if (randomNumber == 0) {
+            // 技名表示
+            $("#com_hand").text("✊はどうけん");
+            // ダメージ表示
+            $("#message_window").text("あいてに３０のダメージ");
+            // ダメージ計算
+            com_HP -= 30;
+            // 音声
+            $(function sound() {
+              $("#hadoken").get(0).currentTime = 0;
+              $("#hadoken").get(0).play();
+            });
+            // チョキの昇竜拳
+          } else if (randomNumber == 1) {
+            // 技名表示
+            $("#com_hand").text("✌️しょうりゅうけん");
+            // ダメージ表示
+            $("#message_window").text("あなたに３０のダメージ");
+            // ダメージ計算
+            player_HP -= 30;
+            // 音声
+            $(function sound() {
+              $("#shoryuken").get(0).currentTime = 0;
+              $("#shoryuken").get(0).play();
+            });
+            // パーの竜巻旋風脚
+          } else if (randomNumber == 2) {
+            // 技名表示
+            $("#com_hand").text("✋たつまきせんぷうきゃく");
+            // ダメージ表示
+            $("#message_window").text(
+              "あいうちとなり、おたがいに１０のダメージ"
+            );
+            // ダメージ計算
+            player_HP -= 10;
+            com_HP -= 10;
+            // 音声
+            $(function sound() {
+              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
+              $("#tatsumaki_senpukyaku").get(0).play();
+            });
+          } else {
+            alert("エラー");
+          }
+          console.log(player_HP);
+          console.log(com_HP);
+          // setTimeout_クリックしてから1.5+1=2.5秒後に実行
+          setTimeout(function () {
+            // KO音声の関数を呼び出し
+            KO();
+          }, 1000);
+        }, 1500);
+      });
 
       // 勝ち負けの音声とメッセージを関数化
       function win_lose() {
@@ -106,6 +312,9 @@
           });
           // 画像切り替え
           $(".image").attr("src", "img/ryu_win.png");
+          // 技リスト非表示
+          $(".move_list").hide();
+          $(".com_move").hide();
           // プレイヤーの勝利メッセージ
           $("#message_window").text(
             "しょうりゅうけん　を　やぶらぬかぎり おまえに　かちめはない！！"
@@ -117,216 +326,22 @@
             $("#winner").get(0).play();
             // 画像切り替え
             $(".image").attr("src", "img/ryu_lose.png");
+            // 技リスト非表示
+            $(".move_list").hide();
+            $(".com_move").hide();
             // コンピューターの勝利メッセージ
             $("#message_window").text(
-              "くにへ　かえるんだな。おまえにも　かぞくがいるだろう・・・"
+              "くにへ　かえるんだな。おまえにも　かぞくがいるだろう・・・（このセリフいってみたかったんだよな）"
             );
           });
         }
       }
 
-      // グーの波動拳を選んだ時の音声
-      $("#gu_btn").on("click", function sound() {
-        $("#hadoken").get(0).currentTime = 0;
-        $("#hadoken").get(0).play();
-        console.log(player_HP);
-        console.log(com_HP);
-      });
-
-      // グーの波動拳を選んだ時の処理
-      $("#gu_btn").on("click", function () {
-        // setTimeout_クリックしてから２秒後に実行
+      $("#message_window").on("click", function () {
+        win_lose();
+        // setTimeout_クリックしてから2秒後に実行
         setTimeout(function () {
-          // ０〜２の乱数作成
-          const randomNumber = Math.floor(Math.random() * 3);
-          // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
-          // グーの波動拳
-          if (randomNumber == 0) {
-            // 技名表示
-            $("#com_hand").text("✊はどうけん");
-            // ダメージ表示
-            $("#message_window").text("うちけしとなり、おたがいにダメージなし");
-            // 音声
-            $(function sound() {
-              $("#hadoken").get(0).currentTime = 0;
-              $("#hadoken").get(0).play();
-            });
-            // チョキの昇竜拳
-          } else if (randomNumber == 1) {
-            // 技名表示
-            $("#com_hand").text("✌️しょうりゅうけん");
-            // ダメージ表示
-            $("#message_window").text("あいてに３０のダメージ");
-            // ダメージ計算
-            com_HP -= 30;
-            // 音声
-            $(function sound() {
-              $("#shoryuken").get(0).currentTime = 0;
-              $("#shoryuken").get(0).play();
-            });
-            // パーの竜巻旋風脚
-          } else if (randomNumber == 2) {
-            // 技名表示
-            $("#com_hand").text("✋たつまきせんぷうきゃく");
-            // ダメージ表示
-            $("#message_window").text("あなたに３０のダメージ");
-            // ダメージ計算
-            player_HP -= 30;
-            // 音声
-            $(function sound() {
-              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
-              $("#tatsumaki_senpukyaku").get(0).play();
-            });
-          } else {
-            alert("エラー");
-          }
-          console.log(player_HP);
-          console.log(com_HP);
-          // setTimeout_クリックしてから２＋１＝３秒後に実行
-          setTimeout(function () {
-            // KO音声の関数を呼び出し
-            KO();
-            // setTimeout_クリックしてから２＋１＋３＝６秒後に実行
-            setTimeout(function () {
-              // 勝ち負けの音声とメッセージの関数を呼び出し
-              win_lose();
-              // setTimeout_クリックしてから２＋１＋３＋２＝８秒後に実行
-              setTimeout(function () {
-                // 勝利メッセージ演出の関数を呼び出し
-                winner_message();
-              }, 2000);
-            }, 3000);
-          }, 1000);
-        }, 2000);
-      });
-
-      // チョキの昇竜拳を選んだ時の音声
-      $("#cho_btn").on("click", function sound() {
-        $("#shoryuken").get(0).currentTime = 0;
-        $("#shoryuken").get(0).play();
-        console.log(player_HP);
-        console.log(com_HP);
-      });
-
-      // チョキの昇竜拳を選んだ時の処理
-      $("#cho_btn").on("click", function () {
-        // setTimeout_クリックしてから２秒後に実行
-        setTimeout(function () {
-          // ０〜２の乱数作成
-          const randomNumber = Math.floor(Math.random() * 3);
-          // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
-          // グーの波動拳
-          if (randomNumber == 0) {
-            // 技名表示
-            $("#com_hand").text("✊はどうけん");
-            // ダメージ表示
-            $("#message_window").text("あなたに３０のダメージ");
-            // ダメージ計算
-            player_HP -= 30;
-            // 音声
-            $(function sound() {
-              $("#hadoken").get(0).currentTime = 0;
-              $("#hadoken").get(0).play();
-            });
-            // チョキの昇竜拳
-          } else if (randomNumber == 1) {
-            // 技名表示
-            $("#com_hand").text("✌️しょうりゅうけん");
-            // ダメージ表示
-            $("#message_window").text(
-              "あいうちとなり、おたがいに１０のダメージ"
-            );
-            // ダメージ計算
-            player_HP -= 10;
-            com_HP -= 10;
-            // 音声
-            $(function sound() {
-              $("#shoryuken").get(0).currentTime = 0;
-              $("#shoryuken").get(0).play();
-            });
-            // パーの竜巻旋風脚
-          } else if (randomNumber == 2) {
-            // 技名表示
-            $("#com_hand").text("✋たつまきせんぷうきゃく");
-            // ダメージ表示
-            $("#message_window").text("あいてに３０のダメージ");
-            // ダメージ計算
-            com_HP -= 30;
-            // 音声
-            $(function sound() {
-              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
-              $("#tatsumaki_senpukyaku").get(0).play();
-            });
-          } else {
-            alert("エラー");
-          }
-          console.log(player_HP);
-          console.log(com_HP);
-        }, 2000);
-      });
-
-      // パーの竜巻旋風脚を選んだ時の音声
-      $("#par_btn").on("click", function sound() {
-        $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
-        $("#tatsumaki_senpukyaku").get(0).play();
-        console.log(player_HP);
-        console.log(com_HP);
-      });
-
-      // パーの竜巻旋風脚を選んだ時の処理
-      $("#par_btn").on("click", function () {
-        // setTimeout_クリックしてから２秒後に実行
-        setTimeout(function () {
-          // ０〜２の乱数作成
-          const randomNumber = Math.floor(Math.random() * 3);
-          // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
-          // グーの波動拳
-          if (randomNumber == 0) {
-            // 技名表示
-            $("#com_hand").text("✊はどうけん");
-            // ダメージ表示
-            $("#message_window").text("あいてに３０のダメージ");
-            // ダメージ計算
-            com_HP -= 30;
-            // 音声
-            $(function sound() {
-              $("#hadoken").get(0).currentTime = 0;
-              $("#hadoken").get(0).play();
-            });
-            // チョキの昇竜拳
-          } else if (randomNumber == 1) {
-            // 技名表示
-            $("#com_hand").text("✌️しょうりゅうけん");
-            // ダメージ表示
-            $("#message_window").text("あなたに３０のダメージ");
-            // ダメージ計算
-            player_HP -= 30;
-            // 音声
-            $(function sound() {
-              $("#shoryuken").get(0).currentTime = 0;
-              $("#shoryuken").get(0).play();
-            });
-            // パーの竜巻旋風脚
-          } else if (randomNumber == 2) {
-            // 技名表示
-            $("#com_hand").text("✋たつまきせんぷうきゃく");
-            // ダメージ表示
-            $("#message_window").text(
-              "あいうちとなり、おたがいに１０のダメージ"
-            );
-            // ダメージ計算
-            player_HP -= 10;
-            com_HP -= 10;
-            // 音声
-            $(function sound() {
-              $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
-              $("#tatsumaki_senpukyaku").get(0).play();
-            });
-          } else {
-            alert("エラー");
-          }
-          console.log(player_HP);
-          console.log(com_HP);
+          winner_message();
         }, 2000);
       });
     </script>

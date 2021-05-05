@@ -47,7 +47,8 @@ li {
   width: max-content;
 }
 li:hover {
-  background: #0066cc;
+  background: white;
+  color: #000000;
 }
 
 .com_move {
@@ -62,7 +63,14 @@ li:hover {
 }
 
 #message_window {
+  cursor: pointer;
   border: 1px solid #fff;
   margin: 0 0 20px;
   padding: 10px;
+  text-align: center;
+}
+
+#message_window:hover {
+  background: white;
+  color: #000000;
 }
