@@ -18,21 +18,40 @@ p {
   margin: 0px;
 }
 
-img {
+.main_image {
   width: 100%;
   height: auto;
   object-fit: cover;
   margin: 0 0 20px;
 }
 
-.HP_gage {
+.KO_image {
+  width: auto;
+  height: 32px;
+  object-fit: cover;
+}
+
+#hero-image {
+  position: relative;
+}
+
+.HP_gauge_wrapper {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.HP_gauge {
   display: table; /* 定義 */
   list-style: none;
   width: max-content;
   margin: 0;
   padding: 0;
   background-color: yellow;
-  border: 1px solid white;
+  border: 2px solid white;
 }
 
 .HP_block {
@@ -40,6 +59,16 @@ img {
   width: max-content;
   color: yellow;
 }
+
+/* #HP_gauge_KO {
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  align-items: center;
+  color: red;
+  background-color: black;
+  padding: 2px;
+} */
 
 .player_com_window {
   display: flex;
