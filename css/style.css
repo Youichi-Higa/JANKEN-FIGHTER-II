@@ -60,16 +60,6 @@ p {
   color: yellow;
 }
 
-/* #HP_gauge_KO {
-  width: 60px;
-  height: 30px;
-  text-align: center;
-  align-items: center;
-  color: red;
-  background-color: black;
-  padding: 2px;
-} */
-
 .player_com_window {
   display: flex;
   justify-content: space-between;
@@ -106,14 +96,35 @@ p {
   padding: 18px, 0;
 }
 
-#message_window {
-  cursor: pointer;
+.border_wrapper {
   border: 1px solid #fff;
   margin: 0 0 20px;
   padding: 10px;
 }
 
+#message_window {
+  cursor: pointer;
+}
+
 #message_window:hover {
   background: white;
   color: #000000;
+}
+
+/* 同じ文字の連続表示の際に切り替えがわかるようにするアニメーション */
+.fadeIn {
+  animation-name: fadeInAnime;
+  animation-duration: 100ms;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInAnime {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

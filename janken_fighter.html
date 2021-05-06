@@ -52,8 +52,9 @@
       </div>
 
       <!-- メッセージウィンドウ -->
-
-      <div id="message_window">ＲＯＵＮＤ　１　ＦＩＧＨＴ！</div>
+      <div class="border_wrapper">
+        <div id="message_window">ＲＯＵＮＤ　１　ＦＩＧＨＴ！</div>
+      </div>
 
       <div class="player_com_window">
         <!-- 必殺技リスト -->
@@ -272,9 +273,11 @@
           // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
           // グーの波動拳
           if (randomNumber == 0) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✊はどうけん");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text("うちけしあって、おたがいにダメージなし");
             // 音声
             $(function sound() {
@@ -283,9 +286,11 @@
             });
             // チョキの昇竜拳
           } else if (randomNumber == 1) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✌️しょうりゅうけん");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text("あいてに３０のダメージ");
             // ダメージ計算
             com_HP -= 30;
@@ -296,9 +301,11 @@
             });
             // パーの竜巻旋風脚
           } else if (randomNumber == 2) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✋たつまきせんぷうきゃく");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text("あなたに３０のダメージ");
             // ダメージ計算
             player_HP -= 30;
@@ -318,6 +325,9 @@
           console.log(com_HP);
           // setTimeout_クリックしてから1.5+0.5=2秒後に実行
           setTimeout(function () {
+            // fadeInというクラス名を外す
+            $("#com_hand").removeClass("fadeIn");
+            $("#message_window").removeClass("fadeIn");
             // KOの音声とメッセージの関数を実行
             KO_func();
           }, 500);
@@ -341,9 +351,11 @@
           // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
           // グーの波動拳
           if (randomNumber == 0) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✊はどうけん");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text("あなたに３０のダメージ");
             // ダメージ計算
             player_HP -= 30;
@@ -354,9 +366,11 @@
             });
             // チョキの昇竜拳
           } else if (randomNumber == 1) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✌️しょうりゅうけん");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text(
               "あいうちとなり、おたがいに１０のダメージ"
             );
@@ -370,9 +384,11 @@
             });
             // パーの竜巻旋風脚
           } else if (randomNumber == 2) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✋たつまきせんぷうきゃく");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text("あいてに３０のダメージ");
             // ダメージ計算
             com_HP -= 30;
@@ -392,6 +408,9 @@
           console.log(com_HP);
           // setTimeout_クリックしてから1.5+0.5=2秒後に実行
           setTimeout(function () {
+            // fadeInというクラス名を外す
+            $("#com_hand").removeClass("fadeIn");
+            $("#message_window").removeClass("fadeIn");
             // KOの音声とメッセージの関数を実行
             KO_func();
           }, 500);
@@ -415,9 +434,11 @@
           // 相手の技が決まって画面に表示され、音声が流れてダメージが表示される
           // グーの波動拳
           if (randomNumber == 0) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✊はどうけん");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text("あいてに３０のダメージ");
             // ダメージ計算
             com_HP -= 30;
@@ -428,9 +449,11 @@
             });
             // チョキの昇竜拳
           } else if (randomNumber == 1) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✌️しょうりゅうけん");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text("あなたに３０のダメージ");
             // ダメージ計算
             player_HP -= 30;
@@ -441,9 +464,11 @@
             });
             // パーの竜巻旋風脚
           } else if (randomNumber == 2) {
-            // 技名表示
+            // 技名表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#com_hand").addClass("fadeIn");
             $("#com_hand").text("✋たつまきせんぷうきゃく");
-            // ダメージ表示
+            // ダメージ表示_前に文字切り替えがわかるようにfadeInというクラス名を追記
+            $("#message_window").addClass("fadeIn");
             $("#message_window").text(
               "あいうちとなり、おたがいに１０のダメージ"
             );
@@ -466,6 +491,9 @@
           console.log(com_HP);
           // setTimeout_クリックしてから1.5+0.5=2秒後に実行
           setTimeout(function () {
+            // fadeInというクラス名を外す
+            $("#com_hand").removeClass("fadeIn");
+            $("#message_window").removeClass("fadeIn");
             // KOの音声とメッセージの関数を呼び出し
             KO_func();
           }, 500);
@@ -522,7 +550,10 @@
           });
           // 画像切り替え
           $(".main_image").attr("src", "img/ryu_win.png");
-          // 技リスト非表示
+          // HPゲージと技リスト非表示
+          $(".HP_gauge_wrapper").hide();
+          $(".HP_gauge_wrapper").removeClass("position");
+          $("hero-imager").removeClass("position");
           $(".player_com_window").hide();
           // プレイヤーの勝利メッセージ
           $("#message_window").html(player_win_message);
