@@ -25,33 +25,49 @@ img {
   margin: 0 0 20px;
 }
 
-.ryu_ken_window {
+.HP_gage {
+  display: table; /* 定義 */
+  list-style: none;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  background-color: yellow;
+  border: 1px solid white;
+}
+
+.HP_block {
+  display: table-cell; /* 定義 */
+  width: max-content;
+  color: yellow;
+}
+
+.player_com_window {
   display: flex;
   justify-content: space-between;
 }
 
-.move_list {
+.player_window {
   border: 1px solid #fff;
   padding: 10px;
   width: max-content;
 }
 
-ul {
+.move_list {
   list-style: none;
   width: max-content;
   margin: 0;
   padding: 0;
 }
-li {
+.move {
   cursor: pointer;
   width: max-content;
 }
-li:hover {
+.move:hover {
   background: #fff;
   color: #000000;
 }
 
-.com_move {
+.com_window {
   border: 1px solid #fff;
   padding: 10px;
   width: max-content;

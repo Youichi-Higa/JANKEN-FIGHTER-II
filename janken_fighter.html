@@ -13,6 +13,20 @@
       <h1>JANKEN FIGHTER II</h1>
     </header>
 
+    <!-- 体力ゲージ -->
+    <ul class="HP_gage">
+      <li class="HP_block" id="HP10">01</li>
+      <li class="HP_block" id="HP20">02</li>
+      <li class="HP_block" id="HP30">03</li>
+      <li class="HP_block" id="HP40">04</li>
+      <li class="HP_block" id="HP50">05</li>
+      <li class="HP_block" id="HP60">06</li>
+      <li class="HP_block" id="HP70">07</li>
+      <li class="HP_block" id="HP80">08</li>
+      <li class="HP_block" id="HP90">09</li>
+      <li class="HP_block" id="HP100">10</li>
+    </ul>
+
     <!-- 画像 -->
     <main>
       <img src="img/battle_ryu_ken.jpg" alt="" class="image" />
@@ -21,20 +35,20 @@
 
       <div id="message_window">ＲＯＵＮＤ　１　ＦＩＧＨＴ！</div>
 
-      <div class="ryu_ken_window">
+      <div class="player_com_window">
         <!-- 必殺技リスト -->
-        <div class="move_list">
+        <div class="player_window">
           <p id="player_HP">あなたのＨＰ：100</p>
           <p>あなたのわざをえらぶ▼</p>
-          <ul>
-            <li id="gu_btn">✊はどうけん</li>
-            <li id="cho_btn">✌️しょうりゅうけん</li>
-            <li id="par_btn">✋たつまきせんぷうきゃく</li>
+          <ul class="move_list">
+            <li class="move" id="gu_btn">✊はどうけん</li>
+            <li class="move" id="cho_btn">✌️しょうりゅうけん</li>
+            <li class="move" id="par_btn">✋たつまきせんぷうきゃく</li>
           </ul>
         </div>
 
         <!-- 相手の技表示 -->
-        <div class="com_move">
+        <div class="com_window">
           <p id="com_HP">あいてのＨＰ：100</p>
 
           <div>あいてのわざは ．．．．．</div>
@@ -70,7 +84,7 @@
       let com_HP = 100;
 
       // HP表示を関数化
-      function HP() {
+      function HP_func() {
         if (player_HP < 0) {
           $("#player_HP").text("あなたのＨＰ：" + "0");
         } else if (com_HP < 0) {
@@ -82,7 +96,7 @@
       }
 
       // KOの音声とメッセージを関数化
-      function KO() {
+      function KO_func() {
         // どちらかのHPが０以下になった場合
         if (player_HP <= 0 || com_HP <= 0) {
           // 音声
@@ -149,13 +163,13 @@
             alert("エラー");
           }
           // HP表示
-          HP();
+          HP_func();
           console.log(player_HP);
           console.log(com_HP);
           // setTimeout_クリックしてから1.5+1=2.5秒後に実行
           setTimeout(function () {
-            // KOの音声とメッセージの関数を呼び出し
-            KO();
+            // KOの音声とメッセージの関数を実行
+            KO_func();
           }, 1000);
         }, 1500);
       });
@@ -228,13 +242,13 @@
             alert("エラー");
           }
           // HP表示
-          HP();
+          HP_func();
           console.log(player_HP);
           console.log(com_HP);
           // setTimeout_クリックしてから1.5+1=2.5秒後に実行
           setTimeout(function () {
-            // KOの音声とメッセージの関数を呼び出し
-            KO();
+            // KOの音声とメッセージの関数を実行
+            KO_func();
           }, 1000);
         }, 1500);
       });
@@ -307,24 +321,24 @@
             alert("エラー");
           }
           // HP表示
-          HP();
+          HP_func();
           console.log(player_HP);
           console.log(com_HP);
           // setTimeout_クリックしてから1.5+1=2.5秒後に実行
           setTimeout(function () {
             // KOの音声とメッセージの関数を呼び出し
-            KO();
+            KO_func();
           }, 1000);
         }, 1500);
       });
 
       // 勝ち負けの音声とメッセージを関数化
-      function win_lose() {
-        // お互いのHPが同時に０になった場合
+      function win_lose_func() {
+        // 引き分け_お互いのHPが同時に０になった場合
         if (player_HP == 0 && com_HP == 0) {
           // メッセージ表示
           $("#message_window").text("ダブルKO　ひきわけ");
-          // Perfect
+          // パーフェクト勝利_プレイヤーのHPが100のまま_かつ_コンピュータのHPが０以下の場合
         } else if (player_HP == 100 && com_HP <= 0) {
           // 音声
           $(function sound() {
@@ -340,7 +354,7 @@
             $("#You_win").get(0).play();
           });
           // メッセージ表示
-          $("#message_window").text("あなたのかち！！！");
+          $("#message_window").text("ＹＯＵ　ＷＩＮ");
           // 負け_プレイヤーのHPが０以下_かつ_コンピュータのHPが０より大きい場合
         } else if (player_HP <= 0 && 0 < com_HP) {
           // 音声
@@ -348,12 +362,18 @@
             $("#You_lose").get(0).play();
           });
           // メッセージ表示
-          $("#message_window").text("あなたのまけ");
+          $("#message_window").text("ＹＯＵ　ＬＯＳＥ");
         }
       }
 
+      const player_win_message =
+        "しょうりゅうけん　を　やぶらぬかぎり<br>おまえに　かちめはない！！</br>";
+
+      const com_win_message =
+        "くにへ　かえるんだな。<br>おまえにも　かぞくがいるだろう・・・</br>（このセリフいってみたかったんだよな）";
+
       // 勝利メッセージ演出を関数化
-      function winner_message() {
+      function winner_message_func() {
         // 勝ち_プレイヤーのHPが０より大きく_かつ_コンピュータのHPが０以下の場合
         if (0 < player_HP && com_HP <= 0) {
           // BGM
@@ -363,12 +383,9 @@
           // 画像切り替え
           $(".image").attr("src", "img/ryu_win.png");
           // 技リスト非表示
-          $(".move_list").hide();
-          $(".com_move").hide();
+          $(".player_com_window").hide();
           // プレイヤーの勝利メッセージ
-          $("#message_window").text(
-            "しょうりゅうけん　を　やぶらぬかぎり おまえに　かちめはない！！"
-          );
+          $("#message_window").html(player_win_message);
           // 負け_プレイヤーのHPが０以下_かつ_コンピュータのHPが０より大きい場合
         } else if (player_HP <= 0 && 0 < com_HP) {
           // BGM
@@ -377,21 +394,18 @@
             // 画像切り替え
             $(".image").attr("src", "img/ryu_lose.png");
             // 技リスト非表示
-            $(".move_list").hide();
-            $(".com_move").hide();
+            $(".player_com_window").hide();
             // コンピューターの勝利メッセージ
-            $("#message_window").text(
-              "くにへ　かえるんだな。おまえにも　かぞくがいるだろう・・・（このセリフいってみたかったんだよな）"
-            );
+            $("#message_window").html(com_win_message);
           });
         }
       }
 
       $("#message_window").on("click", function () {
-        win_lose();
+        win_lose_func();
         // setTimeout_クリックしてから2.3秒後に実行
         setTimeout(function () {
-          winner_message();
+          winner_message_func();
         }, 2300);
       });
     </script>
