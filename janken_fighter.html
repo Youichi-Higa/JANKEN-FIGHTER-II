@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
     <title>JANKEN FIGHTER II</title>
   </head>
 
@@ -70,11 +74,18 @@
 
         <!-- コンピュータの技表示 -->
         <div class="com_window">
-          <!-- <p id="com_HP">あいてのＨＰ：100</p> -->
-
           <div>あいてのわざは ．．．．．</div>
           <div id="com_hand"></div>
         </div>
+      </div>
+
+      <div class="reload">
+        <i
+          class="fas fa-redo"
+          input
+          type="button"
+          onclick="window.location.reload();"
+        ></i>
       </div>
 
       <!-- 音声 -->
@@ -94,6 +105,9 @@
       <audio src="audio/You_win.mp3" id="You_win" preload="auto"></audio>
       <audio src="audio/You_lose.mp3" id="You_lose" preload="auto"></audio>
       <audio src="audio/winner.mp3" id="winner" preload="auto"></audio>
+      <audio src="audio/damage.mp3" id="damage" preload="auto"></audio>
+      <audio src="audio/select.mp3" id="select" preload="auto"></audio>
+      <!-- <audio src="audio/Ryu_Theme.mp3" id="Ryu_Theme" preload="auto"></audio> -->
     </main>
 
     <footer></footer>
@@ -253,8 +267,17 @@
             $("#KO").get(0).play();
           });
           $("#message_window").text("ＫＯ！！！");
+          $("#message_window").addClass("message_window_hover");
         }
       }
+
+      // KOをクリックした時の処理
+      $("#message_window").on("click", function () {
+        // どちらかのHPが０以下になった場合
+        if (player_HP <= 0 || com_HP <= 0) {
+          $("#message_window").removeClass("message_window_hover");
+        }
+      });
 
       // グーの波動拳を選んだ時の音声
       $("#gu_btn").on("click", function sound() {
@@ -298,6 +321,7 @@
             $(function sound() {
               $("#shoryuken").get(0).currentTime = 0;
               $("#shoryuken").get(0).play();
+              $("#damage").get(0).play();
             });
             // パーの竜巻旋風脚
           } else if (randomNumber == 2) {
@@ -313,6 +337,7 @@
             $(function sound() {
               $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
               $("#tatsumaki_senpukyaku").get(0).play();
+              $("#damage").get(0).play();
             });
           } else {
             alert("エラー");
@@ -363,6 +388,7 @@
             $(function sound() {
               $("#hadoken").get(0).currentTime = 0;
               $("#hadoken").get(0).play();
+              $("#damage").get(0).play();
             });
             // チョキの昇竜拳
           } else if (randomNumber == 1) {
@@ -381,6 +407,7 @@
             $(function sound() {
               $("#shoryuken").get(0).currentTime = 0;
               $("#shoryuken").get(0).play();
+              $("#damage").get(0).play();
             });
             // パーの竜巻旋風脚
           } else if (randomNumber == 2) {
@@ -396,6 +423,7 @@
             $(function sound() {
               $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
               $("#tatsumaki_senpukyaku").get(0).play();
+              $("#damage").get(0).play();
             });
           } else {
             alert("エラー");
@@ -446,6 +474,7 @@
             $(function sound() {
               $("#hadoken").get(0).currentTime = 0;
               $("#hadoken").get(0).play();
+              $("#damage").get(0).play();
             });
             // チョキの昇竜拳
           } else if (randomNumber == 1) {
@@ -461,6 +490,7 @@
             $(function sound() {
               $("#shoryuken").get(0).currentTime = 0;
               $("#shoryuken").get(0).play();
+              $("#damage").get(0).play();
             });
             // パーの竜巻旋風脚
           } else if (randomNumber == 2) {
@@ -479,6 +509,7 @@
             $(function sound() {
               $("#tatsumaki_senpukyaku").get(0).currentTime = 0;
               $("#tatsumaki_senpukyaku").get(0).play();
+              $("#damage").get(0).play();
             });
           } else {
             alert("エラー");
@@ -582,6 +613,11 @@
           winner_message_func();
         }, 2300);
       });
+
+      // リュウのテーマ（なぜか再生されない。。）
+      // $(window).on(load, function sound() {
+      //   $("#Ryu_Theme").get(0).play();
+      // });
     </script>
   </body>
 </html>

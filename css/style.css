@@ -97,18 +97,24 @@ p {
 }
 
 .border_wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   border: 1px solid #fff;
   margin: 0 0 20px;
   padding: 10px;
 }
 
-#message_window {
+.message_window_hover {
   cursor: pointer;
-}
-
-#message_window:hover {
   background: white;
   color: #000000;
+}
+
+#reload {
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 
 /* 同じ文字の連続表示の際に切り替えがわかるようにするアニメーション */
@@ -127,4 +133,16 @@ p {
   to {
     opacity: 1;
   }
+}
+
+.reload {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.reload:hover {
+  background: #fff;
+  color: #000000;
 }
